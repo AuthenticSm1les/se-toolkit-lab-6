@@ -14,6 +14,7 @@
   - [Switch to a new branch using the `VS Code Terminal`](#switch-to-a-new-branch-using-the-vs-code-terminal)
   - [Switch to a new branch using `GitLens`](#switch-to-a-new-branch-using-gitlens)
 - [Detect conflicts](#detect-conflicts)
+- [Hard reset the `<branch>`](#hard-reset-the-branch)
 - [Resolve a merge conflict](#resolve-a-merge-conflict)
   - [Resolve a merge conflict using `VS Code`](#resolve-a-merge-conflict-using-vs-code)
   - [Resolve a merge conflict using `GitLens`](#resolve-a-merge-conflict-using-gitlens)
@@ -202,6 +203,48 @@ It can happen that commits in [`<branch>`](./git.md#branch) on [`<remote>`](./gi
    <img alt="Commit Conflict" src="./images/vs-code/status-bar-commit-conflict.png" style="width:400px"></img>
 
    You should see that there is a non-zero number of commits to pull from `<branch>` on `<remote>`.
+
+## Hard reset the `<branch>`
+
+> [!CAUTION]
+> This operation discards all uncommitted changes and local commits that are not on the [`<remote>`](./git.md#remote-placeholder).
+
+1. [Switch to the `<branch>`](#switch-to-the-branch).
+
+2. To fetch the latest state of the `<remote>`,
+
+   [run in the `VS Code Terminal`](./vs-code.md#run-a-command-in-the-vs-code-terminal):
+
+   ```terminal
+   git fetch <remote>
+   ```
+
+   Replace the placeholder [`<remote>`](./git.md#remote-placeholder).
+
+   Example:
+
+   ```terminal
+   git fetch origin
+   ```
+
+3. To hard reset the local `<branch>` to match the `<branch>` on `<remote>`,
+
+   [run in the `VS Code Terminal`](./vs-code.md#run-a-command-in-the-vs-code-terminal):
+
+   ```terminal
+   git reset --hard <remote>/<branch>
+   ```
+
+   Replace the placeholders:
+
+   - [`<remote>`](./git.md#remote-placeholder)
+   - [`<branch>`](./git.md#branch-placeholder)
+
+   Example:
+
+   ```terminal
+   git reset --hard origin/main
+   ```
 
 ## Resolve a merge conflict
 
